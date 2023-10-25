@@ -9,7 +9,7 @@ const headerProps = {
 }
 
 // Inicio do backend
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'https://json-crud-eight.vercel.app/users'
 const initialState = {
     user: { name: '', email: '' },
     list: []
