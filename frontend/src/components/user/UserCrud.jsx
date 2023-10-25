@@ -83,14 +83,6 @@ export default class UserCrud extends Component {
                 <hr />
                 <div className="row">
                     <div className="col-12 d-flex justify-content-end">
-                        <div className="col-12 col-md-6">
-                            <div className="form-group">
-                                {/* <label htmlFor="">Filtro</label> */}
-                                <input type="text" className="form-control"
-                                    placeholder="Filtro..."/>
-                            </div>
-                        </div>
-                        <button className="btn btn-info ml-2">teste</button>
                         <button className="btn btn-primary"
                             onClick={e => this.save(e)}>
                             Salvar
