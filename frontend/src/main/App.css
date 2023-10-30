@@ -1,6 +1,7 @@
 :root {
     /* variáveis */
-    --bg-dark: #1a2f3a;
+    --bg-dark: #383838;
+    --primary-color: #ffb120;
 
     --logo-height: 100px;
     --header-height: 100px;
@@ -9,7 +10,7 @@
     --footer-height: 40px;
 
     --shadow:
-        0 2px 23px 0 rgba(0, 0, 0, 0.1),
+        0 2px 23px 0 rgba(0, 0, 0, 0.3),
         0 2px 49px 0 rgba(0, 0, 0, 0.06);
 }
 
@@ -31,7 +32,9 @@
         "menu content"
         "menu footer";
     height: 100vh;
-    background-color: #f5f5f5;
+    background-image: url('../assets/imgs/bg-img5.jpg');
+    background-position: center center;
+    background-size: cover;
 }
 
 aside.logo {

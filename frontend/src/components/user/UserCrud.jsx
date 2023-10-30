@@ -4,8 +4,8 @@ import axios from 'axios'
 
 const headerProps = {
     icon: 'users',
-    title: 'Usuários',
-    subtitle: 'Cadastro de usuários: Incluir, Listar Alterar e Excluir'
+    title: 'Cadastro',
+    subtitle: 'Cadastre um responsável, o nome do seu Pet na listagem a baixo:'
 }
 
 // Inicio do backend
@@ -136,7 +136,7 @@ export default class UserCrud extends Component {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
-                        <button className="btn btn-warning" onClick={() => this.load(user)}>
+                        <button className="btn btn-warning ml-2" onClick={() => this.load(user)}>
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2" onClick={() => this.remove(user)}>

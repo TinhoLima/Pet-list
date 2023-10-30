@@ -2,10 +2,9 @@ import React from "react";
 import Main from "../template/Main"
 
 export default props =>
-    <Main icon="home" title="Início" subtitle="Segundo Projeto do capítulo de React.">
-        <div className="display-4">Bem vindo!</div>
+    <Main icon="home" title="Home" subtitle="Pet List fazendo a diferença.">
+        <div className="display-3">Bem-vindo!</div>
         <hr />
-        <p className="mb-0">Sistema para exemplificar a construção de um cadastro desenvolvido em React!</p>
-        <br />
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi quod quidem fugit facere sapiente odit ullam dolorum qui a illo! Non similique beatae quae mollitia repudiandae optio maiores numquam aperiam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint facilis tenetur reprehenderit doloribus. Laborum, aut delectus accusamus id non nobis, nesciunt excepturi possimus rem repellendus error harum consequatur? Ipsum, nesciunt.</p>
+        <h1>Seu <strong><span className="text-danger">Pet</span></strong> é especial e não temos dúvida disso!</h1>
+        <p>Por isso desenvolvemos um banco de dados que reuni informações do seu pet, vinculada às informações de seu tutor. Este conteúdo, estará diretamente ligado ao número do microchip. Com o cadastro efetuado, todo registro do proprietário e de seu pet, permanecerão resguardados em nosso em nosso banco de dados. Em caso de perda do animal e após a sua localização, com o número do microchip é possível realizar uma busca em nosso site. Obtendo assim, os dados de contato do proprietário. <br/><br/> Em breve, acrescentaremos novas ferramentas e faremos o possível para atender com o melhor serviço para você e o seu Pet.</p>
     </Main>
