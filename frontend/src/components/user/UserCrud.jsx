@@ -9,8 +9,8 @@ const headerProps = {
 }
 
 // Inicio do backend
-// const baseUrl = 'https://json-crud-3g25q8oxm-alison-coutinhos-projects.vercel.app/users'
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'https://json-crud-npnoksq0q-alison-coutinhos-projects.vercel.app/users'
+// const baseUrl = 'http://localhost:3001/users'
 const initialState = {
     user: { name: '', pet: '', email: '' },
     list: []
