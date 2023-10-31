@@ -3,16 +3,16 @@ import Main from '../template/Main'
 import axios from 'axios'
 
 const headerProps = {
-    icon: 'users',
+    icon: 'paw',
     title: 'Cadastro',
     subtitle: 'Cadastre um responsável, o nome do seu Pet na listagem a baixo:'
 }
 
 // Inicio do backend
-const baseUrl = 'https://json-crud-3g25q8oxm-alison-coutinhos-projects.vercel.app/users'
-// const baseUrl = 'http://localhost:3001/users'
+// const baseUrl = 'https://json-crud-3g25q8oxm-alison-coutinhos-projects.vercel.app/users'
+const baseUrl = 'http://localhost:3001/users'
 const initialState = {
-    user: { name: '', email: '' },
+    user: { name: '', pet: '', email: '' },
     list: []
 }
 
@@ -46,7 +46,7 @@ export default class UserCrud extends Component {
 
     getUpdateList(user, add = true) {
         const list = this.state.list.filter(u => u.id !== user.id)
-        if(add) list.unshift(user)
+        if (add) list.unshift(user)
         return list
     }
 
@@ -60,18 +60,31 @@ export default class UserCrud extends Component {
         return (
             <div className="form">
                 <div className="row">
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-4">
                         <div className="form-group">
-                            <label htmlFor="">Nome</label>
+                            <label htmlFor="">Responsável</label>
                             <input type="text" className="form-control"
-                                name="name" value={this.state.user.name}
-                                onChange={e => this.updateField(e)} placeholder="Digite o nome..." />
+                                name="name"
+                                value={this.state.user.name}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o nome..." />
                         </div>
                     </div>
 
-                    <div className="col-12 col-md-6">
+                    <div className="col-12 col-md-4">
                         <div className="form-group">
-                            <label htmlFor="">email</label>
+                            <label htmlFor="">Pet</label>
+                            <input type="text" className="form-control"
+                                name="pet"
+                                value={this.state.user.pet}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o nome..." />
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4">
+                        <div className="form-group">
+                            <label htmlFor="">Email de contato</label>
                             <input type="email" className="form-control"
                                 name="email"
                                 value={this.state.user.email}
@@ -116,7 +129,8 @@ export default class UserCrud extends Component {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
+                        <th>Responsável</th>
+                        <th>Nome do Pet</th>
                         <th>E-mail</th>
                         <th>Ações</th>
                     </tr>
@@ -134,6 +148,7 @@ export default class UserCrud extends Component {
                 <tr key={user.id}>
                     <td>{user.id}</td>
                     <td>{user.name}</td>
+                    <td>{user.pet}</td>
                     <td>{user.email}</td>
                     <td>
                         <button className="btn btn-warning ml-2" onClick={() => this.load(user)}>

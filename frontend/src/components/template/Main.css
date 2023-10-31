@@ -7,6 +7,11 @@ main > div {
     font-size: 20px;
 }
 
+label {
+    color: #ffb834;
+    font-weight: 600;
+}
+
 @media (max-width: 860px) {
     main > div {
         margin: 10px;
