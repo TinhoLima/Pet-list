@@ -12,7 +12,15 @@ const headerProps = {
 const baseUrl = 'https://json-crud-npnoksq0q-alison-coutinhos-projects.vercel.app/users'
 // const baseUrl = 'http://localhost:3001/users'
 const initialState = {
-    user: { name: '', pet: '', email: '' },
+    user: {
+        name: '',
+        pet: '',
+        tipo: '',
+        sexo: '',
+        raca: '',
+        email: ''
+    },
+
     list: []
 }
 
@@ -27,7 +35,6 @@ export default class UserCrud extends Component {
     }
 
     clear() {
-        // limpar somente o usuário.
         this.setState({ user: initialState.user })
     }
 
@@ -36,12 +43,16 @@ export default class UserCrud extends Component {
         const user = this.state.user
         const method = user.id ? 'put' : 'post'
         const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
-        axios[method](url, user)
-            .then(resp => {
-                // Atualizar a lista local.
-                const list = this.getUpdateList(resp.data)
-                this.setState({ user: initialState.user, list })
-            })
+        if (user == initialState.user) {
+            window.alert('Favor preencher todos os campos.')
+        } else { 
+            axios[method](url, user)
+                .then(resp => {
+                    // Atualizar a lista local.
+                    const list = this.getUpdateList(resp.data)
+                    this.setState({ user: initialState.user, list })
+                })
+        }
     }
 
     getUpdateList(user, add = true) {
@@ -56,6 +67,24 @@ export default class UserCrud extends Component {
         this.setState({ user })
     }
 
+    handleEnter(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            this.save()
+        }
+    }
+
+    load(user) {
+        this.setState({ user })
+    }
+
+    remove(user) {
+        axios.delete(`${baseUrl}/${user.id}`).then(resp => {
+            const list = this.getUpdateList(user, false)
+            this.setState({ list })
+        })
+    }
+
     renderForm() {
         return (
             <div className="form">
@@ -64,17 +93,20 @@ export default class UserCrud extends Component {
                         <div className="form-group">
                             <label htmlFor="">Responsável</label>
                             <input type="text" className="form-control"
+                                onKeyDown={e => this.handleEnter(e)}
                                 name="name"
                                 value={this.state.user.name}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o nome..." />
+                                placeholder="Digite o nome..." 
+                                required/>
                         </div>
                     </div>
 
                     <div className="col-12 col-md-4">
                         <div className="form-group">
-                            <label htmlFor="">Pet</label>
+                            <label htmlFor="">Nome do animal</label>
                             <input type="text" className="form-control"
+                                onKeyDown={e => this.handleEnter(e)}
                                 name="pet"
                                 value={this.state.user.pet}
                                 onChange={e => this.updateField(e)}
@@ -84,12 +116,53 @@ export default class UserCrud extends Component {
 
                     <div className="col-12 col-md-4">
                         <div className="form-group">
+                            <label htmlFor="">Tipo</label>
+                            <select className="form-control"
+                                name="tipo"
+                                value={this.state.user.tipo}
+                                onChange={e => this.updateField(e)}>
+                                <option selected hidden>Selecione</option>
+                                <option>Gato</option>
+                                <option>Cachorro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4">
+                        <div className="form-group">
+                            <label htmlFor="">Sexo</label>
+                            <select className="form-control"
+                                name="sexo"
+                                value={this.state.user.sexo}
+                                onChange={e => this.updateField(e)}>
+                                <option selected hidden>Selecione</option>
+                                <option>Macho</option>
+                                <option>Fêmea</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4">
+                        <div className="form-group">
+                            <label htmlFor="">Raça</label>
+                            <input type="text" className="form-control"
+                                onKeyDown={e => this.handleEnter(e)}
+                                name="raca"
+                                value={this.state.user.raca}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite uma raça..."></input>
+                        </div>
+                    </div>
+
+                    <div className="col-12 col-md-4">
+                        <div className="form-group">
                             <label htmlFor="">Email de contato</label>
                             <input type="email" className="form-control"
+                                onKeyDown={e => this.handleEnter(e)}
                                 name="email"
                                 value={this.state.user.email}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o e-mail..." />
+                                placeholder="Digite um e-mail..." />
                         </div>
                     </div>
                 </div>
@@ -112,17 +185,6 @@ export default class UserCrud extends Component {
         )
     }
 
-    load(user) {
-        this.setState({ user })
-    }
-
-    remove(user) {
-        axios.delete(`${baseUrl}/${user.id}`).then(resp => {
-            const list = this.getUpdateList(user, false)
-            this.setState({ list })
-        })
-    }
-
     renderTable() {
         return (
             <table className="table mt-4">
@@ -131,6 +193,9 @@ export default class UserCrud extends Component {
                         <th>ID</th>
                         <th>Responsável</th>
                         <th>Nome do Pet</th>
+                        <th>Espécie</th>
+                        <th>Sexo</th>
+                        <th>Raça</th>
                         <th>E-mail</th>
                         <th>Ações</th>
                     </tr>
@@ -149,6 +214,9 @@ export default class UserCrud extends Component {
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.pet}</td>
+                    <td>{user.tipo}</td>
+                    <td>{user.sexo}</td>
+                    <td>{user.raca}</td>
                     <td>{user.email}</td>
                     <td>
                         <button className="btn btn-warning ml-2" onClick={() => this.load(user)}>
