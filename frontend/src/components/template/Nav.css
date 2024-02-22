@@ -1,46 +1,71 @@
 aside.menu-area {
-    background-color: var(--primary-color);
-    box-shadow: 
-        2px 0px 10px 0 rgba(0, 0, 0, 0.12),
-        1px 8px 15px 0 rgba(0, 0, 0, 0.404);
+  background-color: var(--primary-color);
+  box-shadow: 2px 0px 10px 0 rgba(0, 0, 0, 0.12),
+    1px 8px 15px 0 rgba(0, 0, 0, 0.404);
 }
 
 .menu a {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 300;
-    padding: 20px;
-    background: linear-gradient(135deg, #d37000 0%, #e7a01b 100%);
-    margin: 10px 0px;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  padding: 20px;
+  background: linear-gradient(135deg, #d37000 0%, #e7a01b 100%);
+  margin: 10px 0px;
 }
 
 .menu a:hover {
-    background: linear-gradient(135deg, #ff7b00 0%, #ff7b00 100%);
+  background: linear-gradient(135deg, #ff7b00 0%, #ff7b00 100%);
 }
 
 .menu span {
-    margin-left: 10px;
-    font-size: 20px;
+  margin-left: 10px;
+  font-size: 20px;
 }
 
-@media(max-width: 768px) {
-    .menu {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
+/************* Media Querie ****************/
 
-    .menu {
-        height: 100%;
-        justify-content: space-around;
-    }
+/* Mobile */
+@media (max-width: 480px) {
+  .menu a {
+    margin: 0px 0px 8px 0px;
+  }
 
-    .menu a  {
-        display: inline;
-        padding: 10px;
-        margin: 0px;
-    }
+  .menu a,
+  .menu a span {
+    font-size: 1.5em;
+  }
+}
 
+/* Extra small devices */
+@media (min-width: 481px) and (max-width: 767px) {
+  .menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    justify-content: space-around;
+  }
 
+  .menu a {
+    display: inline;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+/* Small tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Large tablets/laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Desktop */
+@media (min-width: 1200px) and (max-width: 1919px) {
+}
+
+/* Extra large screens */
+@media (min-width: 1920px) {
 }

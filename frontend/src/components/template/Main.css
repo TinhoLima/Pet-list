@@ -1,28 +1,133 @@
 main > div {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.377);
-    backdrop-filter: saturate(180%) blur(20px);
-    border-radius: 20px;
-    margin: 60px;
-    font-size: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.377);
+  backdrop-filter: saturate(180%) blur(15px);
+  border-radius: 20px;
+  margin: 30px;
+  font-size: 1.2em;
+  display: table;
+  @media screen and (max-width: 580px) {
+    display: block;
+  }
 }
 
 label {
-    color: #ffb834;
-    font-weight: 600;
+  color: #ffb834;
+  font-weight: 600;
 }
 
-@media (max-width: 860px) {
-    main > div {
-        margin: 10px;
-    }
+th,
+td {
+  display: table-cell;
+}
 
-    .display-3 {
-        font-size: 50px;
-        text-align: center;
-    }
+.table {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
 
-    .ml-2 {
-        margin-top: 5px;
+tr {
+  display: table-row;
+}
+
+/************* Media Querie ****************/
+
+/* Mobile */
+@media (max-width: 480px) {
+  main div {
+    margin-top: 150px !important;
+  }
+
+  div .form {
+    display: none;
+  }
+
+  th,
+  td {
+    display: block;
+  }
+
+  th {
+    display: none;
+  }
+
+  th::before,
+  td::before {
+    margin-bottom: 3px;
+    content: attr(data-title);
+    min-width: 98px;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  tr {
+    /* background: #f6f6f6; */
+
+    &:nth-of-type(odd) {
+      background: #e9e9e9;
+      color: var(--bg-dark);
     }
+  }
+}
+
+/* Small devices */
+@media (min-width: 481px) and (max-width: 767px) {
+  main > div {
+    font-size: 1.2rem;
+  }
+
+  div .table {
+    font-size: 1rem;
+  }
+}
+
+/* Small tablets */
+@media (min-width: 768px) and (max-width: 990px) {
+}
+
+@media (max-width: 991px) {
+  main > div {
+    margin: 10px;
+  }
+
+  .display-3 {
+    font-size: 50px;
+    text-align: center;
+  }
+}
+
+/* Large tablets/laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  div .form {
+    font-size: 1vw;
+  }
+
+  div .form .form-control {
+    font-size: 1vw;
+  }
+
+  div .form .btn {
+    font-size: 1vw;
+  }
+
+  div .table {
+    font-size: 1vw;
+  }
+
+  div .table .btn {
+    font-size: 1vw;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  div .form {
+    font-size: 1rem;
+  }
+
+  div .table {
+    font-size: 1rem;
+  }
 }
