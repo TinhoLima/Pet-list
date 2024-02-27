@@ -62,11 +62,16 @@ tr {
     display: block;
   }
 
+  td::before {
+    color: #ffb834;
+    font-weight: 900;
+  }
+
   tr {
     /* background: #f6f6f6; */
 
     &:nth-of-type(odd) {
-      background: #e9e9e9;
+      background: #ececec;
       color: var(--bg-dark);
     }
   }
@@ -89,7 +94,7 @@ tr {
 
 @media (max-width: 991px) {
   main > div {
-    margin: 10px;
+    margin: 20px;
   }
 
   .display-3 {
