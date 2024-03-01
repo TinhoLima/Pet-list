@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Main from "../template/Main";
 import axios from "axios";
+import Modal from './UserModal'
 
 const headerProps = {
   icon: "paw",
@@ -9,8 +10,8 @@ const headerProps = {
 };
 
 // Inicio do backend
-const baseUrl = 'https://json-crud-eight.vercel.app/users'
-// const baseUrl = "http://localhost:3001/users";
+// const baseUrl = 'https://json-crud-eight.vercel.app/users'
+const baseUrl = "http://localhost:3001/users";
 const initialState = {
   user: {
     name: "",
@@ -20,17 +21,37 @@ const initialState = {
     raca: "",
     email: "",
   },
-
+  
   list: [],
 };
 
 export default class UserCrud extends Component {
   state = { ...initialState };
-
+  
   componentWillMount() {
     axios(baseUrl).then((resp) => {
       this.setState({ list: resp.data });
     });
+  }
+  
+  
+  getUpdateList(user, add = true) {
+    const list = this.state.list.filter((u) => u.id !== user.id);
+    if (add) list.unshift(user);
+    return list;
+  }
+  
+  updateField(event) {
+    const user = { ...this.state.user };
+    user[event.target.name] = event.target.value;
+    this.setState({ user });
+  }
+  
+  handleEnter(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      this.save();
+    }
   }
 
   clear() {
@@ -42,7 +63,7 @@ export default class UserCrud extends Component {
     const user = this.state.user;
     const method = user.id ? "put" : "post";
     const url = user.id ? `${baseUrl}/${user.id}` : baseUrl;
-    if (user == initialState.user) {
+    if (user === initialState.user) {
       window.alert("Favor preencher todos os campos.");
     } else {
       axios[method](url, user).then((resp) => {
@@ -50,25 +71,6 @@ export default class UserCrud extends Component {
         const list = this.getUpdateList(resp.data);
         this.setState({ user: initialState.user, list });
       });
-    }
-  }
-
-  getUpdateList(user, add = true) {
-    const list = this.state.list.filter((u) => u.id !== user.id);
-    if (add) list.unshift(user);
-    return list;
-  }
-
-  updateField(event) {
-    const user = { ...this.state.user };
-    user[event.target.name] = event.target.value;
-    this.setState({ user });
-  }
-
-  handleEnter(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      this.save();
     }
   }
 
@@ -192,16 +194,23 @@ export default class UserCrud extends Component {
               Salvar
             </button>
 
-            <button
-              className="btn btn-secondary ml-2"
-              onClick={(e) => this.clear(e)}
-            >
+            <button className="btn btn-secondary ml-2" onClick={(e) => this.clear(e)}>
               Cancelar
             </button>
           </div>
         </div>
       </div>
     );
+  }
+
+  renderFormMobile() {
+    return (
+      <div className="row-button">
+          <div className="col-12 d-flex justify-content-end">
+          <Modal />
+          </div>
+      </div>
+    )
   }
 
   renderTable() {
@@ -258,6 +267,7 @@ export default class UserCrud extends Component {
     return (
       <Main {...headerProps}>
         {this.renderForm()}
+        {this.renderFormMobile()}
         {this.renderTable()}
       </Main>
     );

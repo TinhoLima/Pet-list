@@ -28,7 +28,7 @@ aside.menu-area {
 /* Mobile */
 @media (max-width: 480px) {
   .menu a {
-    margin: 0px 0px 8px 0px;
+    margin: 0px 0px 1px 0px;
   }
 
   .menu a,
