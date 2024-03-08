@@ -10,8 +10,8 @@ const headerProps = {
 };
 
 // Inicio do backend
-const baseUrl = 'https://json-crud-eight.vercel.app/users'
-// const baseUrl = "http://localhost:3001/users";
+// const baseUrl = 'https://json-crud-eight.vercel.app/users'
+const baseUrl = "http://localhost:3001/users";
 const initialState = {
   user: {
     name: "",
@@ -104,7 +104,7 @@ export default class UserCrud extends Component {
               />
             </div>
           </div>
-
+    
           <div className="col-12 col-md-4">
             <div className="form-group">
               <label htmlFor="">Nome do animal</label>
@@ -119,7 +119,7 @@ export default class UserCrud extends Component {
               />
             </div>
           </div>
-
+    
           <div className="col-12 col-md-4">
             <div className="form-group">
               <label htmlFor="">Tipo</label>
@@ -137,7 +137,7 @@ export default class UserCrud extends Component {
               </select>
             </div>
           </div>
-
+    
           <div className="col-12 col-md-4">
             <div className="form-group">
               <label htmlFor="">Sexo</label>
@@ -155,7 +155,7 @@ export default class UserCrud extends Component {
               </select>
             </div>
           </div>
-
+    
           <div className="col-12 col-md-4">
             <div className="form-group">
               <label htmlFor="">Raça</label>
@@ -170,7 +170,7 @@ export default class UserCrud extends Component {
               ></input>
             </div>
           </div>
-
+    
           <div className="col-12 col-md-4">
             <div className="form-group">
               <label htmlFor="">Email de contato</label>
@@ -187,13 +187,14 @@ export default class UserCrud extends Component {
           </div>
         </div>
 
-        <hr />
+      <hr />
+
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
             <button className="btn btn-primary" onClick={(e) => this.save(e)}>
               Salvar
             </button>
-
+    
             <button className="btn btn-secondary ml-2" onClick={(e) => this.clear(e)}>
               Cancelar
             </button>
@@ -202,6 +203,8 @@ export default class UserCrud extends Component {
       </div>
     );
   }
+
+
 
   renderFormMobile() {
     return (
