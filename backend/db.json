@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alison Coutinho",
+      "pet": "Banguela",
+      "tipo": "Cachorro",
+      "sexo": "Macho",
+      "raca": "caramelo",
+      "email": "altinho@tinho.com"
+    },
+    {
+      "id": 2,
+      "name": "Luciene Mendonça",
+      "pet": "Morgana",
+      "tipo": "Gato",
+      "sexo": "Fêmea",
+      "raca": "SRD",
+      "email": "mjds@empresa.com"
+    },
+    {
+      "id": 3,
+      "name": "Iracema Barreto",
+      "pet": "Belinha",
+      "tipo": "Gato",
+      "sexo": "Fêmea",
+      "raca": "SRD",
+      "email": "alison@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "Cristina da Silva",
+      "pet": "Dora",
+      "tipo": "Gato",
+      "sexo": "Fêmea",
+      "raca": "SRD",
+      "email": "email@teste.com"
+    }
+  ]
+}
