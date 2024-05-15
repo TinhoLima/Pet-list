@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
-export default props => {
+export default (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -22,34 +22,16 @@ export default props => {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Responsável</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
+                type="text"
+                className="form-control"
+                onKeyDown={(e) => this.handleEnter(e)}
+                name="name"
+                value={this.state.user.name}
+                onChange={(e) => this.updateField(e)}
+                placeholder="Nome do responsável"
+                required
                 autoFocus
               />
             </Form.Group>
@@ -66,4 +48,4 @@ export default props => {
       </Modal>
     </>
   );
-}
+};

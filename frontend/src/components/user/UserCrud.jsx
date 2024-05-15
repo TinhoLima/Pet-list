@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Main from "../template/Main";
 import axios from "axios";
-import Modal from './UserModal'
 
 const headerProps = {
   icon: "paw",
@@ -85,9 +84,28 @@ export default class UserCrud extends Component {
     });
   }
 
+  modalOff() {
+    // const form = document.querySelector('.form')
+
+    // form.classList.add('desative')
+  }
+
+  modalOn() {
+    const form = document.querySelector('.row')
+
+    // fazer logica if
+    form.classList.add('active')
+  }
+
   renderForm() {
     return (
       <div className="form">
+        <div className="row-modal">
+          <button className="btn btn-primary" onClick={(e) => this.modalOn(e)}>
+            Adicionar
+          </button>
+        </div>
+
         <div className="row">
           <div className="col-12 col-md-4">
             <div className="form-group">
@@ -195,7 +213,7 @@ export default class UserCrud extends Component {
               Salvar
             </button>
     
-            <button className="btn btn-secondary ml-2" onClick={(e) => this.clear(e)}>
+            <button className="btn btn-secondary ml-2" onClick={(e) => this.modalOff(e)}>
               Cancelar
             </button>
           </div>
@@ -204,17 +222,15 @@ export default class UserCrud extends Component {
     );
   }
 
-
-
-  renderFormMobile() {
-    return (
-      <div className="row-button">
-          <div className="col-12 d-flex justify-content-end">
-          <Modal />
-          </div>
-      </div>
-    )
-  }
+  // renderFormMobile() {
+  //   return (
+  //     <div className="row-button">
+  //         <div className="col-12 d-flex justify-content-end">
+  //         <Modal />
+  //         </div>
+  //     </div>
+  //   )
+  // }
 
   renderTable() {
     return (
@@ -270,7 +286,7 @@ export default class UserCrud extends Component {
     return (
       <Main {...headerProps}>
         {this.renderForm()}
-        {this.renderFormMobile()}
+        {/* {this.renderFormMobile()} */}
         {this.renderTable()}
       </Main>
     );

@@ -42,6 +42,22 @@ tr {
   margin-top: 20px;
 }
 
+.row-modal{
+  text-align: end;
+}
+
+.row{
+  display: none;
+}
+
+.desative {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
 /************* Media Querie ****************/
 
 /* Mobile */
